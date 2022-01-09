@@ -19,6 +19,7 @@ tabela=dane
 
 print(tabela)
 
+
 # print(headers)
 
 # dane na sztywno:
