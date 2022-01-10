@@ -6,7 +6,6 @@ import win32com.client
 import Pobieranie_danych
 from Funkcje_podstawowe import *
 
-
 acad = Autocad()
 
 version = acad.doc.GetVariable("ACADVER")

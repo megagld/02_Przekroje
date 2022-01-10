@@ -2,11 +2,12 @@ from pathlib import Path
 import pandas as pd
 
 # Plik z danymi:
-file = '{}{}'.format(Path(__file__).parent,'''/Dane.xlsx''')
-
+file = '{}{}'.format(Path(__file__).parent,'''\Dane.xlsx''')
+# file = 'c:\_magazyn\_Python\_skrypty\02_Przekroje\transpozycja i nagówki\343 - testy pandy - transpozycja.p'
+print(file)
 # Nazwy arkuszy:
 sheet_names = pd.ExcelFile(file).sheet_names
-# print(sheet_names)
+print(sheet_names)
 
 sheet=sheet_names[0]
 
@@ -17,8 +18,10 @@ dane.columns=headers
 dane.index=[0,1,2,3]
 tabela=dane
 
-print(tabela)
-
+# print(tabela)
+q=tabela['PL - szer']
+print(q)
+# print(tabela.iloc[1,1])
 
 # print(headers)
 
