@@ -188,12 +188,12 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
     y_ch_lewy_1 = y_kraw_l + 0.14
 
     # Określenie szerokości:
-    if bar_lewa_rodz == 'linowa':
+    if bar_lewa_rodz == 'bariera linowa':
         bar_lewa_szer = 0.15
     else:
         bar_lewa_szer = 0.40
 
-    if bal_lewa_rodz == 'B':
+    if bal_lewa_rodz[0] == 'b':
         bal_lewa_szer = 0.21
     else:
         bal_lewa_szer = 0.41
@@ -221,7 +221,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
 
     # Wstawianie bloku bariery:
     if bar_lewa == 'T':
-        if bar_lewa_rodz == 'linowa':
+        if bar_lewa_rodz == 'bariera linowa':
             x_bar_lewa = x_ch_lewy_1 + 0.20 - bar_lewa_op - 0.075
             y_bar_lewa = round(y_ch_lewy_1 + (bar_lewa_op + 0.1625 - 0.20) * ch_lewy_sp / 100 + 0.01, 8)
             name = 'Bariera_linowa'
@@ -251,7 +251,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
         if ch_lewy_szer == 0:
             x_bar_lewa = x_ch_lewy_1 + 0.20 - bar_lewa_op - 0.31
             y_bar_lewa = round(y_ch_lewy_1 + (bar_lewa_op + 0.52 - 0.20) * ch_lewy_sp / 100 + 0.01, 8)
-            name = f'Barieroporęcz_{bar_lewa_rodz}'
+            name = f'Barieroporęcz_{bar_lewa_rodz[-3:]}'
             x_bar_lewa_2 = round(x_bar_lewa - 0.21, 6)
             y_bar_lewa_2 = y_bar_lewa
             x_bar_lewa_1 = round((x_bar_lewa_2 * (1 + ch_lewy_sp / 100) - 0.01) / (1 + ch_lewy_sp / 100), 12)
@@ -264,7 +264,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
         else:
             x_bar_lewa = x_ch_lewy_1 + 0.20 - ch_lewy_szer - 0.31
             y_bar_lewa = round(y_ch_lewy_1 + (ch_lewy_szer + 0.52 - 0.20) * ch_lewy_sp / 100 + 0.01, 8)
-            name = f'Barieroporęcz_{bar_lewa_rodz}'
+            name = f'Barieroporęcz_{bar_lewa_rodz[-3:]}'
             x_bar_lewa_2 = round(x_bar_lewa - 0.21, 6)
             y_bar_lewa_2 = y_bar_lewa
             x_bar_lewa_1 = round((x_bar_lewa_2 * (1 + ch_lewy_sp / 100) - 0.01) / (1 + ch_lewy_sp / 100), 12)
@@ -291,7 +291,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
 
     # Wstawianie balustrady/ekranu:
     if bar_lewa == 'T':
-        if bal_lewa_rodz == 'B':
+        if bal_lewa_rodz[0] == 'b':
             x_bal_lewa = x_ch_lewy_2 + 0.17
             y_bal_lewa = round(y_ch_lewy_2 - 0.11 * ch_lewy_sp / 100 + 0.01, 8)
             name = f'Balustrada_{bal_lewa_wys}'
@@ -362,12 +362,12 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
     y_ch_prawy_1 = y_kraw_p + 0.14
 
     # Określenie szerokości:
-    if bar_prawa_rodz == 'linowa':
+    if bar_prawa_rodz == 'bariera linowa':
         bar_prawa_szer = 0.15
     else:
         bar_prawa_szer = 0.40
 
-    if bal_prawa_rodz == 'B':
+    if bal_prawa_rodz[0] == 'b':
         bal_prawa_szer = 0.21
     else:
         bal_prawa_szer = 0.41
@@ -395,7 +395,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
 
     # Wstawianie bloku bariery:
     if bar_prawa == 'T':
-        if bar_prawa_rodz == 'linowa':
+        if bar_prawa_rodz == 'bariera linowa':
             x_bar_prawa = x_ch_prawy_1 - 0.20 + bar_prawa_op + 0.075
             y_bar_prawa = round(y_ch_prawy_1 + (bar_prawa_op + 0.1625 - 0.20) * ch_prawy_sp / 100 + 0.01, 8)
             name = 'Bariera_linowa'
@@ -427,7 +427,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
         if ch_prawy_szer == 0:
             x_bar_prawa = x_ch_prawy_1 - 0.20 + bar_prawa_op + 0.31
             y_bar_prawa = round(y_ch_prawy_1 + (bar_prawa_op + 0.52 - 0.20) * ch_prawy_sp / 100 + 0.01, 8)
-            name = f'Barieroporęcz_{bar_prawa_rodz}'
+            name = f'Barieroporęcz_{bar_prawa_rodz[-3:]}'
             x_bar_prawa_3 = round(x_bar_prawa + 0.21, 6)
             y_bar_prawa_3 = y_bar_prawa
             x_bar_prawa_4 = round((x_bar_prawa_3 * (1 + ch_prawy_sp / 100) + 0.01) / (1 + ch_prawy_sp / 100), 12)
@@ -441,7 +441,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
         else:
             x_bar_prawa = x_ch_prawy_1 - 0.20 + ch_prawy_szer + 0.31
             y_bar_prawa = round(y_ch_prawy_1 + (ch_prawy_szer + 0.52 - 0.20) * ch_prawy_sp / 100 + 0.01, 8)
-            name = f'Barieroporęcz_{bar_prawa_rodz}'
+            name = f'Barieroporęcz_{bar_prawa_rodz[-3:]}'
             x_bar_prawa_3 = round(x_bar_prawa + 0.21, 6)
             y_bar_prawa_3 = y_bar_prawa
             x_bar_prawa_4 = round((x_bar_prawa_3 * (1 + ch_prawy_sp / 100) + 0.01) / (1 + ch_prawy_sp / 100), 12)
@@ -469,7 +469,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
 
     # Wstawianie balustrady/ekranu:
     if bar_prawa == 'T':
-        if bal_prawa_rodz == 'B':
+        if bal_prawa_rodz[0] == 'b':
             x_bal_prawa = x_ch_prawy_2 - 0.17
             y_bal_prawa = round(y_ch_prawy_2 - 0.11 * ch_prawy_sp / 100 + 0.01, 8)
             name = f'Balustrada_{bal_prawa_wys}'
@@ -728,16 +728,16 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
 
     # Obliczenie położenia wymiarów:
     if bar_lewa == 'N':
-        y_wym_l = y_bar_lewa + bar_lewa_rodz + 0.19
+        y_wym_l = y_bar_lewa + float(bar_lewa_rodz[-3:]) + 0.19
     else:
-        if bal_lewa_rodz == 'B':
+        if bal_lewa_rodz[0] == 'b':
             y_wym_l = y_bal_lewa + bal_lewa_wys + 0.165
         else:
             y_wym_l = y_bal_lewa + 1.24501667
     if bar_prawa == 'N':
-        y_wym_p = y_bar_prawa + bar_prawa_rodz + 0.19
+        y_wym_p = y_bar_prawa + float(bar_prawa_rodz[-3:]) + 0.19
     else:
-        if bal_prawa_rodz == 'B':
+        if bal_prawa_rodz[0] == 'b':
             y_wym_p = y_bal_prawa + bal_prawa_wys + 0.165
         else:
             y_wym_p = y_bal_prawa + 1.24501667
@@ -871,13 +871,13 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
                 wymiary_gora_1.append(
                     (aDouble(x_ch_lewy_2 - 0.04, y_ch_lewy_2 - 0.04, 0), aDouble(x_bar_wym, y_bar_wym, 0), 0))
     else:
-        if bal_lewa_rodz == 'B':
+        if bal_lewa_rodz[0] == 'b':
             x_bal_wym = x_bal_lewa + 0.04
             y_bal_wym = y_bal_lewa + bal_lewa_wys - 0.01
         else:
             x_bal_wym = x_bal_lewa + 0.175
             y_bal_wym = round(y_bal_lewa + 1.07001667, 12)
-        if bar_lewa_rodz == 'linowa':
+        if bar_lewa_rodz == 'bariera linowa':
             x_bar_wym = x_bar_lewa + 0.075
             y_bar_wym = round(y_bar_lewa + 0.72, 8)
             x_gra_wym_1 = x_bar_wym - bar_lewa_szer
@@ -968,13 +968,13 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
                 wymiary_gora_1.append((aDouble(x_bar_wym, y_bar_wym, 0),
                                        aDouble(x_ch_prawy_2 + 0.04, y_ch_prawy_2 - 0.04, 0), 0))
     else:
-        if bal_prawa_rodz == 'B':
+        if bal_prawa_rodz[0] == 'b':
             x_bal_wym = x_bal_prawa - 0.04
             y_bal_wym = y_bal_prawa + bal_prawa_wys - 0.01
         else:
             x_bal_wym = x_bal_prawa - 0.175
             y_bal_wym = round(y_bal_prawa + 1.07001667, 12)
-        if bar_prawa_rodz == 'linowa':
+        if bar_prawa_rodz == 'bariera linowa':
             x_bar_wym = x_bar_prawa - 0.075
             y_bar_wym = round(y_bar_prawa + 0.72, 8)
             x_gra_wym_1 = x_bar_wym + bar_prawa_szer
