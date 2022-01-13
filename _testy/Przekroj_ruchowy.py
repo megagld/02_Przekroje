@@ -163,6 +163,8 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
     LWPline.Closed = True
     LWPline.Layer = 'AII_M_krawężnik'
 
+    print('KRAWĘŻNIKI')
+    
     # ==================================================================================================================
     # CHODNIKI
     # ==================================================================================================================
@@ -182,6 +184,9 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
     bar_lewa_op = bariery_lewa.iloc[0, 2]
     bal_lewa_rodz = bariery_lewa.iloc[0, 3]
     bal_lewa_wys = bariery_lewa.iloc[0, 4]
+
+    # do poprawy !!!!- powinno pobierać dane jako liczbę, a nie jako str
+    bal_lewa_wys=float(bal_lewa_wys)    
 
     # Punkt początkowy:
     x_ch_lewy_1 = x_kraw_l - 0.2
@@ -206,6 +211,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
         else:
             delta_x_ch_lewy = ch_lewy_szer + 0.56 - 0.20
 
+    
     # Punkt końcowy:
     x_ch_lewy_2 = x_ch_lewy_1 - delta_x_ch_lewy
     y_ch_lewy_2 = round(y_ch_lewy_1 + delta_x_ch_lewy * ch_lewy_sp / 100, 8)
@@ -304,6 +310,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
             x_bal_lewa_4 = round(
                 (x_bal_lewa_3 * (1 - ch_lewy_sp / 100) + 0.01 + 0.12 * ch_lewy_sp / 100) / (1 - ch_lewy_sp / 100), 12)
             y_bal_lewa_4 = round(y_bal_lewa_3 - x_bal_lewa_4 + x_bal_lewa_3, 12)
+
         else:
             x_bal_lewa = x_ch_lewy_2 + 0.285
             y_bal_lewa = round(y_ch_lewy_2 - 0.06 * ch_lewy_sp / 100 + 0.01, 8)
@@ -356,6 +363,9 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
     bar_prawa_op = bariery_prawa.iloc[0, 2]
     bal_prawa_rodz = bariery_prawa.iloc[0, 3]
     bal_prawa_wys = bariery_prawa.iloc[0, 4]
+
+    # do poprawy !!!!- powinno pobierać dane jako liczbę, a nie jako str
+    bal_prawa_wys=float(bal_prawa_wys)   
 
     # Punkt początkowy:
     x_ch_prawy_1 = x_kraw_p + 0.2
@@ -521,6 +531,8 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
         Lat_prawa = acad.model.InsertBlock(aDouble(x_ch_prawy_2, y_ch_prawy_2, 0), name, 1, 1, 1, 0)
         Lat_prawa.Layer = 'AII_M_wyposażenie'
 
+    print('CHODNIKI')
+
     # ==================================================================================================================
     # IZOLACJA
     # ==================================================================================================================
@@ -628,6 +640,8 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
     LWPline.LinetypeGeneration = True
     LWPline.ConstantWidth = 0.01
 
+    print('IZOLACJA')
+
     # ==================================================================================================================
     # PODLEWKI POD KRAWĘŻNIKI
     # ==================================================================================================================
@@ -705,6 +719,8 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
     LWPline.Layer = 'AII_M_krawężnik'
     color.ColorIndex = 8
     LWPline.TrueColor = color
+
+    print('PODLEWKI POD KRAWĘŻNIKI')
 
     # ==================================================================================================================
     # HATCH
@@ -1041,7 +1057,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
         wymiary_gora_4.append((aDouble(x_ch_lewy_2 - 0.04, y_ch_lewy_2 - 0.04, 0),
                                aDouble(x_ch_prawy_2 + 0.59, y_ch_prawy_2 - 0.04 + 0.55 * ch_prawy_sp / 100, 0), 0))
 
-# Wymiary boczne:
+    # Wymiary boczne:
     if ch_lewy_lat == 'N':
         wym_d_lewa_1 = (aDouble(x_ch_lewy_2, y_ch_lewy_2, 0), aDouble(x_ch_lewy_2, y_ch_lewy_2 - ch_lewy_deska, 0), 90)
         wym_d_lewa_2 = aDouble(x_ch_lewy_2 - 0.415, y_ch_lewy_2, 0)
@@ -1377,6 +1393,7 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
         y_lewy_skr = y_ch_lewy_2 + 0.55 * ch_lewy_sp / 100 - 0.04
         x_prawy_skr = x_ch_prawy_2 + 0.59
         y_prawy_skr = y_ch_prawy_2 + 0.55 * ch_prawy_sp / 100 - 0.04
+    print('WYMIARY')
 
 
 
@@ -1384,4 +1401,3 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
 
     return [y_wym, wymiary_gora_1, wymiary_gora_2, wymiary_gora_3, wymiary_gora_4,
             x_lewy_skr, y_lewy_skr, x_prawy_skr, y_prawy_skr, koty, pow_gorna, os]
-

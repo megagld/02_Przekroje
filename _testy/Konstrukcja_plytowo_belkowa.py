@@ -18,16 +18,16 @@ def rysowanie_konstrukcja_belkowy(pow_gorna):
     obiekt=Pobieranie_danych.obiekt
     konstrukcja = Pobieranie_danych.konstrukcja    
     
-    h_wsp_kr = konstrukcja.iloc[0, 0]
-    h_wsp_zam = konstrukcja.iloc[0, 1]
-    h_pl = konstrukcja.iloc[0, 2]
-    h_pl_zam = konstrukcja.iloc[0, 3]
-    szer_zam = konstrukcja.iloc[0, 4]
-    h_dzw = konstrukcja.iloc[0, 5]
-    b_dzw = konstrukcja.iloc[0, 6]
-    n_dzw = konstrukcja.iloc[0, 7]
-    roz_dzw = konstrukcja.iloc[0, 8]
-    skos_dzw = konstrukcja.iloc[0, 9]
+    h_wsp_kr = konstrukcja['B_WSP - h'][0]
+    h_wsp_zam = konstrukcja['B_WSP - h zam'][0]
+    h_pl = konstrukcja['B_PL - h'][0]
+    h_pl_zam = konstrukcja['B_PL - h zam'][0]
+    szer_zam = konstrukcja['B_PL - szer zam'][0]
+    h_dzw = konstrukcja['B_DZW - h'][0]
+    b_dzw = konstrukcja['B_DZW - b'][0]
+    n_dzw = konstrukcja['B_DZW - n'][0]
+    roz_dzw = konstrukcja['B_DZW - roz'][0]
+    skos_dzw = konstrukcja['B_DZW - skos'][0]
 
     # Dolna powierzchnia konstrukcji:
     x_kon = round((pow_gorna[-1][0] + pow_gorna[0][0]) / 2, 8)

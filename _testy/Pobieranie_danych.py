@@ -5,10 +5,8 @@ def pobierz_dane(file,sheet):
     # Pobranie danych:
     global tabela,tom,obiekt,typ,delta_y,delta_x,pasy_lewe,pasy_prawe,awaryjny_lewy,awaryjny_prawy,opaska_lewa,opaska_prawa,chodnik_lewy,chodnik_prawy,bariery_lewa,bariery_prawa,zalamanie_lewe,zalamanie_prawe,konstrukcja
     
-    # dane = pd.read_excel(file, usecols=[11,12,13,14], sheet_name=sheet).T.iloc[:4,:57]
-    # do usunięcia powyższe - !!!
-    dane = pd.read_excel(file, usecols=[4,5,6,7], sheet_name=sheet).T.iloc[:4,:57]
-    ozn = pd.read_excel(file, usecols=[10], sheet_name=sheet).T.iloc[:,:57]
+    dane = pd.read_excel(file, usecols=[5,6,7,8], sheet_name=sheet).T.iloc[:4,:110]
+    ozn = pd.read_excel(file, usecols=[1], sheet_name=sheet).T.iloc[:,:110]
     headers=[str(i) for i in ozn.iloc[0,:]]
     dane.columns=headers
     dane.index=[0,1,2,3]
@@ -32,4 +30,4 @@ def pobierz_dane(file,sheet):
     zalamanie_prawe = tabela.loc[:,'ZP T/N':'ZP - x']
 
     # # Pobranie danych:
-    konstrukcja =tabela.loc[:,'WSP - h':'DZW - skos']
+    konstrukcja =tabela.loc[:,'B_WSP - h':'Z_Ż - od d']
