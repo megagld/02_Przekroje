@@ -57,14 +57,22 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
     jezdnia = [[x_g, y_g]]
 
     # Punkty:
-    for index, row in pasy_lewe.iterrows():
-        if index == 0:
-            x = x_g
-            y = y_g
-        if isnan(pasy_lewe.iloc[index, 0]) or pasy_lewe.iloc[index, 0] == 0:
-            break
-        x -= row['PL - szer']
-        y += row['PL - szer'] * row['PL - spadek'] / 100
+    # for index, row in pasy_lewe.iterrows():
+    #     if index == 0:
+    #         x = x_g
+    #         y = y_g
+    #     if isnan(pasy_lewe.iloc[index, 0]) or pasy_lewe.iloc[index, 0] == 0:
+    #         break
+    #     x -= row['PL - szer']
+    #     y += row['PL - szer'] * row['PL - spadek'] / 100
+    #     jezdnia.append([round(x, 8), round(y, 8)])
+
+    x = x_g
+    y = y_g
+
+    for width in pasy_lewe['PL - szer'].split('+'):            
+        x -= float(width)
+        y += float(width) * pasy_lewe['PL - spadek'] / 100
         jezdnia.append([round(x, 8), round(y, 8)])
 
     for index, row in awaryjny_lewy.iterrows():
@@ -763,17 +771,25 @@ def rysowanie_przekroj_ruchowy(x_g, y_g):
     wymiary_gora_1 = []
 
     # Wymiary elementów jezdni po lewej stronie niwelety:
-    for index, row in pasy_lewe.iterrows():
-        if index == 0:
-            x1 = x_g
-            y1 = y_g
-        if isnan(pasy_lewe.iloc[index, 0]) or pasy_lewe.iloc[index, 0] == 0:
-            break
-        x2 = round(x1 - row['PL - szer'], 8)
-        y2 = round(y1 + row['PL - szer'] * row['PL - spadek'] / 100, 8)
+    # for index, row in pasy_lewe.iterrows():
+    #     if index == 0:
+    #         x1 = x_g
+    #         y1 = y_g
+    #     if isnan(pasy_lewe.iloc[index, 0]) or pasy_lewe.iloc[index, 0] == 0:
+    #         break
+        # x2 = round(x1 - row['PL - szer'], 8)
+        # y2 = round(y1 + row['PL - szer'] * row['PL - spadek'] / 100, 8)
+        # wymiary_gora_1.append((aDouble(x2, y2, 0), aDouble(x1, y1, 0), 'pas ruchu'))
+        # x1 = x2
+        # y1 = y2
+
+    x1 = x_g
+    y1 = y_g
+
+    for width in pasy_lewe['PL - szer'].split('+'):            
+        x2 = round(x1 - float(width)], 8)
+        y2 = round(y1 + float(width)] * pasy_lewe['PL - spadek'] / 100, 8)
         wymiary_gora_1.append((aDouble(x2, y2, 0), aDouble(x1, y1, 0), 'pas ruchu'))
-        x1 = x2
-        y1 = y2
 
     for index, row in awaryjny_lewy.iterrows():
         if isnan(awaryjny_lewy.iloc[index, 0]) or awaryjny_lewy.iloc[index, 0] == 0:
