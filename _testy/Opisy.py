@@ -16,7 +16,7 @@ acad_32 = win32com.client.Dispatch("AutoCAD.Application")
 
 
 @speed_test
-def opis(opis_gora, sheet):
+def opis(opis_gora):
 
     # Pobranie danych:
     obiekt=Pobieranie_danych.obiekt

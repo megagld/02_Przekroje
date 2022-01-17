@@ -1,3 +1,4 @@
+from binhex import LINELEN
 from pathlib import Path
 import pandas as pd
 
@@ -9,16 +10,24 @@ from Konstrukcja_plytowo_belkowa import *
 file = '{}{}'.format(Path(__file__).parent,'''/Dane.xlsx''')
 
 # Nazwy arkuszy:
-sheet_names = pd.ExcelFile(file).sheet_names
+# sheet_names = pd.ExcelFile(file).sheet_names
+# ustalone  "na sztywno" jako '01_Zestawienie obiektów'
+s_name='01_Zestawienie obiektów'
+
 
 # Rysowanie przekrojów:
-x_g = 0
-y_g = 0
+# x_g = 0
+# y_g = 0
 opis_gora = []
 
-for index, sheet in enumerate(sheet_names):
+# liczba_obiektów=len(pd.read_excel(file, sheet_name=s_name).columns)
+liczba_obiektów=2# -->poskończeniu pisania zamienić na powyższe
+
+# for index, sheet in enumerate(s_name):
+for i in range(liczba_obiektów):
     # Pobranie danych
-    Pobieranie_danych.pobierz_dane(file,sheet)
+    nr_przekroju=i+5
+    Pobieranie_danych.pobierz_dane(file,s_name,nr_przekroju)
     import Pobieranie_danych
 
     # # Określenie punktu 0,0:
@@ -31,7 +40,7 @@ for index, sheet in enumerate(sheet_names):
     pow_gorna = przekroj_ruchowy[10]
 
     # Opisywanie:
-    opis(opis_gora, sheet)
+    opis(opis_gora)
     opis_gora = []
 
 
