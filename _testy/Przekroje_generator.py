@@ -1,10 +1,12 @@
 from binhex import LINELEN
 from pathlib import Path
 import pandas as pd
+import Pobieranie_danych
 
 from Przekroj_ruchowy import *
 from Opisy import *
 from Konstrukcja_plytowo_belkowa import *
+from Konstrukcja_zespolona_belki_T import *
 
 # Plik z danymi:
 file = '{}{}'.format(Path(__file__).parent,'''/Dane.xlsx''')
@@ -46,7 +48,11 @@ for i in range(liczba_obiektów):
 
     # # Rysowanie konstrukcji:
     # if sheet.split('_')[0] == 'B':
-    rysowanie_konstrukcja_belkowy(pow_gorna)
+    if Pobieranie_danych.typ=='płytowo-belkowy':
+        rysowanie_konstrukcja_belkowy(pow_gorna)
+    elif Pobieranie_danych.typ=='zespolony (belki T)':
+        rysowanie_konstrukcja_belki_T(pow_gorna)
+    
     # elif sheet.split('_')[0] == 'T':
     #     rysowanie_konstrukcja_belki_T(file, sheet, pow_gorna)
     # elif sheet.split('_')[0] == 'S':
