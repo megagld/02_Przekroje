@@ -7,6 +7,9 @@ from Przekroj_ruchowy import *
 from Opisy import *
 from Konstrukcja_plytowo_belkowa import *
 from Konstrukcja_zespolona_belki_T import *
+from Konstrukcja_skrzynkowy import *
+from Konstrukcja_plyta import *
+from Konstrukcja_zespolony import *
 
 # Plik z danymi:
 file = '{}{}'.format(Path(__file__).parent,'''/Dane.xlsx''')
@@ -23,7 +26,7 @@ s_name='01_Zestawienie obiektów'
 opis_gora = []
 
 # liczba_obiektów=len(pd.read_excel(file, sheet_name=s_name).columns)
-liczba_obiektów=2# -->poskończeniu pisania zamienić na powyższe
+liczba_obiektów=6# -->poskończeniu pisania zamienić na powyższe
 
 # for index, sheet in enumerate(s_name):
 for i in range(liczba_obiektów):
@@ -45,24 +48,20 @@ for i in range(liczba_obiektów):
     opis(opis_gora)
     opis_gora = []
 
-
     # # Rysowanie konstrukcji:
-    # if sheet.split('_')[0] == 'B':
+
     if Pobieranie_danych.typ=='płytowo-belkowy':
         rysowanie_konstrukcja_belkowy(pow_gorna)
     elif Pobieranie_danych.typ=='zespolony (belki T)':
         rysowanie_konstrukcja_belki_T(pow_gorna)
-    
-    # elif sheet.split('_')[0] == 'T':
-    #     rysowanie_konstrukcja_belki_T(file, sheet, pow_gorna)
-    # elif sheet.split('_')[0] == 'S':
-    #     rysowanie_konstrukcja_skrzynkowy(y_g, file, sheet, pow_gorna)
-    # elif sheet.split('_')[0] == 'P':
-    #     rysowanie_konstrukcja_plytowy(file, sheet, pow_gorna)
-    # elif sheet.split('_')[0] == 'Z':
-    #     rysowanie_konstrukcja_zespolony(file, sheet, pow_gorna)
-    # else:
-    #     print('Zły rodzaj konstrukcji!')
-    #     break
+    elif Pobieranie_danych.typ=='skrzynkowy (kablobetonowy)':
+        rysowanie_konstrukcja_skrzynkowy(y_g,pow_gorna)
+    elif Pobieranie_danych.typ=='płytowy':
+        rysowanie_konstrukcja_plytowy(pow_gorna)
+    elif Pobieranie_danych.typ=='zespolony (stal-beton)':
+        rysowanie_konstrukcja_zespolony(pow_gorna)
+    else:
+        print('Zły rodzaj konstrukcji!')
+        break
 
 
