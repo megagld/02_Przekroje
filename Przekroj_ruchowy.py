@@ -11,6 +11,7 @@ acad = Autocad()
 
 version = acad.doc.GetVariable("ACADVER")
 color = acad.app.GetInterfaceObject(f'AutoCAD.ACCmColor.{version[0:2]}')
+print(color.ColorIndex)
 acad_32 = win32com.client.Dispatch("AutoCAD.Application")
 
 
