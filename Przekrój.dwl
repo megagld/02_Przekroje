@@ -1,0 +1,3 @@
+A2
+DESKTOP-I8PH46I 
+wtorek, 25 stycznia 2022  12:51:39

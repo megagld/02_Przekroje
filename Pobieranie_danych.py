@@ -10,6 +10,12 @@ def pobierz_dane(file,sheet,nr_przekroju):
     ozn = pd.read_excel(file, usecols=[1], sheet_name=sheet).T.iloc[:,:110]
     headers=[str(i) for i in ozn.iloc[0,:]]
     dane.columns=headers
+
+    # zmiana '-' na zera
+    for (colname,colval) in dane.iteritems():
+        if colval.values=='-':
+            dane[colname]=0
+
     dane.index=[0]
     tabela=dane
     tom=tabela['Tom'].to_frame().iloc[0, 0]
