@@ -1,4 +1,4 @@
-from pyautocad import aDouble, Autocad
+from pyautocad import APoint, aDouble, Autocad
 import pandas as pd
 from math import isnan, atan, fabs, radians, sin, cos
 from itertools import chain
@@ -193,3 +193,30 @@ def opis(opis_gora):
             Text.ScaleFactor = 0.85
 
     print(f'Obiekt {obiekt} - opis gotowy!')
+    # ==================================================================================================================
+    # RAMKI
+    # ==================================================================================================================
+    
+    rec_mid=opis_gora[0][11]
+    rec_dim=Pobieranie_danych.ramka
+    rec_x,rec_y=rec_mid[0],rec_mid[1]+0.5
+    rec_h,rec_w=(int(i) for i in rec_dim.split('x'))
+    d_ram=0
+
+    if 'lewa' in Pobieranie_danych.obiekt:
+        d_ram=rec_w/2
+    
+    if not 'prawa' in Pobieranie_danych.obiekt:
+        ramka_pkt = (   rec_x-rec_w/2, rec_y-rec_h/2,
+                        rec_x+rec_w/2+d_ram, rec_y-rec_h/2,
+                        rec_x+rec_w/2+d_ram, rec_y+rec_h/2,
+                        rec_x-rec_w/2, rec_y+rec_h/2)
+
+        LWPline = acad.model.AddLightWeightPolyline(aDouble(ramka_pkt))
+        LWPline.Layer = 'AII_M_pomoc'
+        LWPline.Closed = True
+
+        p=APoint(rec_x-rec_w/2+.5, rec_y+rec_h/2-1)
+        tom=Pobieranie_danych.tom
+        opis=acad.model.AddText('Tom: '+tom,p,.5)
+        opis.Layer = 'AII_M_pomoc'

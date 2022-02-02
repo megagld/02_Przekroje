@@ -18,6 +18,7 @@ file = '{}{}'.format(Path(__file__).parent,'''/Dane.xlsx''')
 # sheet_names = pd.ExcelFile(file).sheet_names
 # ustalone  "na sztywno" jako '01_Zestawienie obiektów'
 s_name='01_Zestawienie obiektów'
+s_def_name='00_Dane podstawowe'
 
 
 # Rysowanie przekrojów:
@@ -32,7 +33,7 @@ liczba_obiektów=6# -->poskończeniu pisania zamienić na powyższe
 for i in range(liczba_obiektów):
     # Pobranie danych
     nr_przekroju=i+5
-    Pobieranie_danych.pobierz_dane(file,s_name,nr_przekroju)
+    Pobieranie_danych.pobierz_dane(file,s_name,nr_przekroju,s_def_name)
     import Pobieranie_danych
 
     # # Określenie punktu 0,0:
@@ -63,5 +64,3 @@ for i in range(liczba_obiektów):
     else:
         print('Zły rodzaj konstrukcji!')
         break
-
-
